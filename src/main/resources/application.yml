@@ -1,0 +1,13 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      # Transforma os objetos Java em JSON antes de enviar para o Kafka
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      # Transforma o JSON de volta para objeto Java ao ler do Kafka
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: openfinance-core-group
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"
